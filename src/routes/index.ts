@@ -3,8 +3,8 @@ import controller = require('../controller');
 
 const router = new Router();
 
-router.get('/github/vue-layui', controller.vueLayui.trigger);
-router.get('/gitee/webhooks', controller.webhooks.trigger);
-router.get('/github/fe', controller.fe.trigger);
+router.post('/github/vue-layui', controller.vueLayui.trigger);
+router.post('/gitee/webhooks', controller.webhooks.trigger);
+router.post('/github/fe', controller.fe.trigger);
 
 export { router };
