@@ -1,15 +1,15 @@
 import { BaseContext } from 'koa';
-import * as execa from 'execa';
+import * as shell from 'shelljs';
 
 import DingDing from '../utils/DingDing';
 
 
 export default class VueLayui {
   public static async trigger(ctx: BaseContext){
-    await execa('cd', ['/root/vue-layui'])
-    await execa('git', ['pull'])
-    await execa('npm', ['i'])
-    await execa('npm', ['run', 'build'])
+    shell.cd('/root/vue-layui')
+    shell.exec('git pull')
+    shell.exec('npm i')
+    shell.exec('npm run build')
     // const option = {
     // 	to: "admin@jskou.com",
     // 	subject: 'github',

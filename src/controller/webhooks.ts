@@ -1,14 +1,13 @@
 import { BaseContext } from 'koa';
-import * as execa from 'execa';
+import * as shell from 'shelljs';
 
 export default class webhooks {
   public static async trigger(ctx: BaseContext){
-    await execa('cd', ['/root/webhooks/dist'])
-    await execa('git', ['pull'])
-    await execa('npm', ['i'])
-    await execa('npm', ['build'])
-    await execa('tsc');
-    execa('pm2', ['restart', 'webhooks'])
+    shell.cd('/root/webhooks/dist')
+    shell.exec('git pull')
+    shell.exec('npm i')
+    shell.exec('npm run build')
+    shell.exec('pm2 restart webhooks')
 
     ctx.body = {
       code: 0
