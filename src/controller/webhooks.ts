@@ -6,6 +6,7 @@ export default class webhooks {
     await execa('cd', ['/root/webhooks/dist'])
     await execa('git', ['pull'])
     await execa('npm', ['i'])
+    await execa('tsc');
     execa('pm2', ['restart', 'webhooks'])
 
     ctx.body = {
